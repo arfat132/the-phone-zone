@@ -1,0 +1,22 @@
+body {
+  background-color: #eaebef !important;
+}
+.navbar {
+  background-color: navy;
+}
+.search-box {
+  width: 800px !important;
+  height: 40px;
+  border-radius: 2.25rem !important;
+  position: relative;
+}
+.search-btn {
+  position: absolute;
+  margin-left: 728px;
+  height: 40px;
+  border-top-right-radius: 2.25rem !important;
+  border-bottom-right-radius: 2.25rem !important;
+}
+.phone-card{
+    border-radius: 0.75rem !important;
+}
