@@ -4,6 +4,7 @@ body {
 .navbar {
   background-color: navy;
 }
+
 .search-box {
   width: 800px !important;
   height: 40px;
@@ -17,6 +18,30 @@ body {
   border-top-right-radius: 2.25rem !important;
   border-bottom-right-radius: 2.25rem !important;
 }
+
 .phone-card{
     border-radius: 0.75rem !important;
+}
+.details-btn{
+    border-radius: 2.25rem !important;
+    background: navy !important;
+}
+.details-image{
+    width: 450px;
+}
+@media only screen and (max-width: 576px){
+    .search-box {
+        position: absolute;
+        width: 280px !important;
+        height: 40px; 
+        border-radius: 2.25rem !important;
+        position: relative;
+      }
+      .search-btn {
+        position: absolute;
+        margin-left: 204px;
+        height: 40px;
+        border-top-right-radius: 2.25rem !important;
+        border-bottom-right-radius: 2.25rem !important;
+      }
 }
