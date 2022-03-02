@@ -29,19 +29,23 @@ body {
 .details-image{
     width: 450px;
 }
+.row{
+    align-items: center !important;
+}
 @media only screen and (max-width: 576px){
+    .navbar .container{
+        flex-direction: column;
+    }
+    .fa-cart-plus{
+        display: none;
+    }
     .search-box {
-        position: absolute;
         width: 280px !important;
         height: 40px; 
-        border-radius: 2.25rem !important;
-        position: relative;
-      }
+              }
       .search-btn {
-        position: absolute;
         margin-left: 204px;
         height: 40px;
-        border-top-right-radius: 2.25rem !important;
-        border-bottom-right-radius: 2.25rem !important;
+        
       }
 }

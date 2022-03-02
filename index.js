@@ -1,14 +1,21 @@
 const searchResult = () => {
-    const searchValue = document.getElementById('search-value').value;
-
+    let searchValue = document.getElementById('search-value').value;
+    
+//fetch url
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`
     fetch(url)
         .then(response => response.json())
-        .then(data => displayPhone(data.data))
+        .then(data => displayPhone(data.data.slice(0, 20)))
 }
 
 const displayPhone = (data) => {
-  //  console.log(data);
+    //Error handle
+    if (data.length == false) {
+        const errorDiv = document.getElementById('error-message');
+        errorDiv.textContent = '';
+        errorDiv.innerHTML = `No result found`;    
+    }
+    //load result
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     data.forEach(phone => {
@@ -28,15 +35,16 @@ const displayPhone = (data) => {
         searchResult.appendChild(div);
     })
 }
-
+//Details fetch url
 const searchDetails = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
     fetch(url)
         .then(response => response.json())
         .then(data => phoneDetails(data.data))
 }
+//load details 
 const phoneDetails = (phone) => {
-console.log(phone);
+    //console.log(phone);
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = '';
     const div = document.createElement('div');
@@ -48,7 +56,7 @@ console.log(phone);
   <div class="col-md-8">
     <div class="card-body">
       <h2 class="card-title fw-bold">${phone.name}</h2>
-      <p class="card-text"><small class="text-muted">${phone?.releaseDate}</small></p>
+      <p class="card-text"><small class="text-muted">${phone.releaseDate ? phone.releaseDate: 'Release Date Not Available' }</small></p>
       <h5 class="card-title fw-bold">Main Features</h5>
               <h6 class="fw-bold">ChipSet: <span class="text-muted">${phone.mainFeatures?.chipSet}</span></h6>
               <h6 class="fw-bold">DisplaySize: <span class="text-muted">${phone.mainFeatures?.displaySize}</span></h6>
@@ -56,12 +64,12 @@ console.log(phone);
               <h6 class="fw-bold">Sensors: <span class="text-muted">${phone.mainFeatures?.sensors.join()}</span></h6>
               <h6 class="fw-bold">Storage: <span class="text-muted">${phone.mainFeatures?.storage}</span></h6>
       <h5 class="card-title fw-bold">Others</h5>
-              <h6 class="fw-bold">Bluetooth: <span class="text-muted">${phone.others?.Bluetooth}</span></h6>
-              <h6 class="fw-bold">GPS: <span class="text-muted">${phone?.others?.GPS}</span></h6>
-              <h6 class="fw-bold">NFC: <span class="text-muted">${phone?.others?.NFC}</span></h6>
-              <h6 class="fw-bold">Radio: <span class="text-muted">${phone?.others?.Radio}</span></h6>
-              <h6 class="fw-bold">USB: <span class="text-muted">${phone?.others?.USB}</span></h6>
-              <h6 class="fw-bold">WLAN: <span class="text-muted">${phone?.others?.WLAN}</span></h6>
+              <h6 class="fw-bold">Bluetooth: <span class="text-muted">${phone.others? phone.others.Bluetooth: 'Not available'}</span></h6>
+              <h6 class="fw-bold">GPS: <span class="text-muted">${phone.others? phone.others.GPS: 'Not available'}</span></h6>
+              <h6 class="fw-bold">NFC: <span class="text-muted">${phone?.others? phone.others.NFC: 'Not available'}</span></h6>
+              <h6 class="fw-bold">Radio: <span class="text-muted">${phone?.others? phone.others.Radio: 'Not available'}</span></h6>
+              <h6 class="fw-bold">USB: <span class="text-muted">${phone?.others? phone.others.USB: 'Not available'}</span></h6>
+              <h6 class="fw-bold">WLAN: <span class="text-muted">${phone?.others? phone.others.WLAN: 'Not available'}</span></h6>
     </div>
   </div>
     `;
