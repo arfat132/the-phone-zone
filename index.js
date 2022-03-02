@@ -10,15 +10,18 @@ const searchResult = () => {
 
 const displayPhone = (data) => {
     //Error handle
+    let errorDiv = document.getElementById('error-message');
     if (data.length == false) {
-        let errorDiv = document.getElementById('error-message');
         errorDiv.textContent = '';
         errorDiv.innerHTML = `No result found`;    
+    } else {
+        errorDiv.innerHTML = ''; 
     }
 
     //load result
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+    
 
     //result counting
     const phoneData = data;
