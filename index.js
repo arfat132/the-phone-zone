@@ -23,13 +23,12 @@ const displayPhone = (data) => {
     //result counting
     const phoneData = data;
     const resultCount = document.getElementById("result-count");
+    resultCount.textContent = "";
     if (phoneData.length > 1) {
       resultCount.innerHTML = `${data.length} results found`;
     } else if (phoneData.length == 1) {
       resultCount.innerHTML = `${data.length} result found`;
     }
-
-    //searchResult.textContent = '';
     data.forEach(phone => {
        // console.log(phone);
         const div = document.createElement('div');
