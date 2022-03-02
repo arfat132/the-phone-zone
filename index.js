@@ -1,13 +1,12 @@
 const searchResult = () => {
-    const searchValue = document.getElementById('search-value').value;
-    
+    const searchText = document.getElementById('search-value').value;
+   
 //fetch url
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`
+    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
     fetch(url)
         .then(response => response.json())
         .then(data => displayPhone(data.data.slice(0, 20)))
 }
-
 
 const displayPhone = (data) => {
     //Error handle
@@ -19,8 +18,16 @@ const displayPhone = (data) => {
     //load result
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+    const phoneData = data;
+    const resultCount = document.getElementById("result-count");
+    if (phoneData.length > 1) {
+      resultCount.innerHTML = `${data.length} results found`;
+    } else if (phoneData.length == 1) {
+      resultCount.innerHTML = `${data.length} result found`;
+    }
+    //searchResult.textContent = '';
     data.forEach(phone => {
-        console.log(phone);
+       // console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -35,14 +42,15 @@ const displayPhone = (data) => {
         `;
         searchResult.appendChild(div);
     })
-
 }
+
 //Details fetch url
 const searchDetails = (id) => {
+    window.scrollTo(0,0);
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
     fetch(url)
         .then(response => response.json())
-        .then(data => phoneDetails(data.data))
+        .then(data => phoneDetails(data.data));
 }
 //load details 
 const phoneDetails = (phone) => {

@@ -27,6 +27,9 @@ body {
     border-radius: 2.25rem !important;
     background: navy !important;
 }
+.card{
+    border: none !important;
+}
 .details-image{
     width: 450px;
 }
