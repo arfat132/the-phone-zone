@@ -89,6 +89,8 @@ const phoneDetails = (phone) => {
   </div>
     `;
     phoneDetails.appendChild(div);
+    
+    
 
 }
 
