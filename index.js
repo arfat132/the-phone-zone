@@ -1,5 +1,5 @@
 const searchResult = () => {
-    let searchValue = document.getElementById('search-value').value;
+    const searchValue = document.getElementById('search-value').value;
     
 //fetch url
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`
@@ -8,10 +8,11 @@ const searchResult = () => {
         .then(data => displayPhone(data.data.slice(0, 20)))
 }
 
+
 const displayPhone = (data) => {
     //Error handle
     if (data.length == false) {
-        const errorDiv = document.getElementById('error-message');
+        let errorDiv = document.getElementById('error-message');
         errorDiv.textContent = '';
         errorDiv.innerHTML = `No result found`;    
     }
@@ -34,6 +35,7 @@ const displayPhone = (data) => {
         `;
         searchResult.appendChild(div);
     })
+
 }
 //Details fetch url
 const searchDetails = (id) => {
@@ -74,5 +76,6 @@ const phoneDetails = (phone) => {
   </div>
     `;
     phoneDetails.appendChild(div);
+
 }
 

@@ -17,6 +17,7 @@ body {
   height: 40px;
   border-top-right-radius: 2.25rem !important;
   border-bottom-right-radius: 2.25rem !important;
+ 
 }
 
 .phone-card{
@@ -44,7 +45,7 @@ body {
         height: 40px; 
               }
       .search-btn {
-        margin-left: 204px;
+        margin-left: 208px;
         height: 40px;
         
       }
