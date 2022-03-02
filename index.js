@@ -22,7 +22,6 @@ const displayPhone = (data) => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     
-
     //result counting
     const phoneData = data;
     const resultCount = document.getElementById("result-count");
@@ -47,7 +46,6 @@ const displayPhone = (data) => {
       </div>
         `;
         searchResult.appendChild(div);
-        
     })
 }
 
@@ -93,7 +91,5 @@ const phoneDetails = (phone) => {
     `;
     phoneDetails.appendChild(div);
     
-    
-
 }
 
