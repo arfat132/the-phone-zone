@@ -1,10 +1,9 @@
 body {
   background-color: #eaebef !important;
 }
-.navbar {
+.navbar   {
   background-color: navy;
 }
-
 .search-box {
   width: 800px !important;
   height: 40px;
@@ -19,10 +18,6 @@ body {
   border-bottom-right-radius: 2.25rem !important;
  
 }
-
-.phone-card{
-    border-radius: 0.75rem !important;
-}
 .details-btn{
     border-radius: 2.25rem !important;
     background: navy !important;
@@ -36,6 +31,9 @@ body {
 .row{
     align-items: center !important;
 }
+
+/* Media query */
+
 @media only screen and (max-width: 576px){
     .navbar .container{
         flex-direction: column;

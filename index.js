@@ -5,7 +5,7 @@ const searchResult = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
     fetch(url)
         .then(response => response.json())
-        .then(data => displayPhone(data.data.slice(0, 20)))
+        .then(data => displayPhone(data.data.slice(0, 20)));
 }
 
 const displayPhone = (data) => {
@@ -15,9 +15,12 @@ const displayPhone = (data) => {
         errorDiv.textContent = '';
         errorDiv.innerHTML = `No result found`;    
     }
+
     //load result
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+
+    //result counting
     const phoneData = data;
     const resultCount = document.getElementById("result-count");
     if (phoneData.length > 1) {
@@ -25,13 +28,14 @@ const displayPhone = (data) => {
     } else if (phoneData.length == 1) {
       resultCount.innerHTML = `${data.length} result found`;
     }
+
     //searchResult.textContent = '';
     data.forEach(phone => {
        // console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-        <div class="card shadow phone-card h-100 ">
+        <div class="card shadow h-100 rounded-3 ">
         <img src="${phone.image}" class="card-img-top w-50 mx-auto pt-5 pb-3" alt="...">
         <div class="card-body text-center">
           <h2 class="card-title fw-bold">${phone.phone_name}</h2>
@@ -41,6 +45,7 @@ const displayPhone = (data) => {
       </div>
         `;
         searchResult.appendChild(div);
+        
     })
 }
 
@@ -52,6 +57,7 @@ const searchDetails = (id) => {
         .then(response => response.json())
         .then(data => phoneDetails(data.data));
 }
+
 //load details 
 const phoneDetails = (phone) => {
     //console.log(phone);
